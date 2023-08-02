@@ -21,7 +21,7 @@ const AddInfo: React.FC<AddInfoProps> = ({ onClose }) => {
     }
 
     const newInfo: Information = {
-      informationId: ,
+      informationId: undefined,
       titre: title,
       contenu: content,
       datePublication: new Date(),

@@ -38,11 +38,22 @@ setupIonicReact();
 
 const App: React.FC = () => {
 
+  // État pour gérer la visibilité du formulaire EditInfo
+  const [showEditInfo, setShowEditInfo] = useState(false);
+
+  // Fonction pour gérer la fermeture du formulaire EditInfo
+  const handleCloseEditInfo = () => {
+    setShowEditInfo(false);
+  };
+
   // Récupérer l'identifiant de l'information à partir de la route
-  const { informationId } = useParams<{ informationId: string }>();
+  //const { informationId } = useParams<{ informationId: string }>();
+const [informations, setInformations] = useState<Information[]>([]);
 
   // Récupérer les informations de l'information à éditer en utilisant l'identifiant
-  const informationToEdit = informationId.find((info: { informationId: string; }) => info.informationId === informationId);
+  const informationToEdit = informations.find(info => info.informationId === informations);
+  
+  
 
   return (
   <IonApp>
@@ -69,15 +80,15 @@ const App: React.FC = () => {
           <AddUserForm />
         </Route>
 
-        <Route exact path="/acueil/addmembre">EditInfo
+        <Route exact path="/acueil/addmembre">
           <UserWait />
         </Route>
         
         
           {/* Passer les informations de l'information à éditer à EditInfo */}
-          <Route exact path="/information/edit/:informationId">
-            <EditInfo onClose={handleCloseEditInfo} information={informationToEdit || null} />
-          </Route>
+        <Route exact path="/information/edit/:informationId" >
+          <EditInfo onClose={handleCloseEditInfo} information={informationToEdit || null} />
+        </Route>
         
         <Route>
             <Redirect to="/login" />
