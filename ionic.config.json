@@ -1,5 +1,7 @@
 {
   "name": "GestionEtudiant",
-  "integrations": {},
+  "integrations": {
+    "capacitor": {}
+  },
   "type": "react"
 }
