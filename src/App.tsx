@@ -48,7 +48,7 @@ const App: React.FC = () => {
 
   // Récupérer l'identifiant de l'information à partir de la route
   //const { informationId } = useParams<{ informationId: string }>();
-const [informations, setInformations] = useState<Information[]>([]);
+  const [informations, setInformations] = useState<Information[]>([]);
 
   // Récupérer les informations de l'information à éditer en utilisant l'identifiant
   const informationToEdit = informations.find(info => info.informationId === informations);
@@ -86,7 +86,7 @@ const [informations, setInformations] = useState<Information[]>([]);
         
         
           {/* Passer les informations de l'information à éditer à EditInfo */}
-        <Route exact path="/information/edit/:informationId" >
+        <Route exact path="/information/edit/:informationId" component={EditInfo} >
           <EditInfo onClose={handleCloseEditInfo} information={informationToEdit || null} />
         </Route>
         

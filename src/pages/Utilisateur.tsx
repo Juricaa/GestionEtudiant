@@ -6,6 +6,7 @@ import { useHistory } from 'react-router-dom'; // Importez useHistory depuis rea
 //import List from '../components/user-list';
 import Exam from '../components/information/Information';
 import Modification from '../components/utilisateur/modificationUser';
+import Actualite from '../components/information/Actualite';
 
 
 
@@ -19,6 +20,11 @@ const Utilisateur: React.FC = () => {
   const utilisateurPrenom: string = AuthenticationService.getCurrentUserSurname() || ''; // Utilisez la fonction pour obtenir l'ID de l'utilisateur connecté,
 
   const history = useHistory(); // Obtenez l'objet history
+  const [showActualite, setShowActualite] = useState(true);
+
+  const hideActualite = () => {
+    setShowActualite(false);
+  }
 
   // État pour afficher/masquer le IonPopover
   const [showPopover, setShowPopover] = useState(false);
@@ -143,6 +149,8 @@ const Utilisateur: React.FC = () => {
             
             {/* Composant Modification */}
           {showModification && <Modification onClose={hideModification} />}
+
+          <Actualite onClose={hideActualite}/>
       
         </IonContent>
 
